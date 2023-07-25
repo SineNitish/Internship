@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instagram Feed</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="instagram-feed"></div>
+<script src="https://www.instagram.com/embed.js"></script>
+<script>
+// Get the Instagram feed.
+const instagramFeed = await fetch('https://www.instagram.com/graphql/query/?query_id=1234567890')
+.then(response => response.json())
+.then(data => data.data.user.edge_owner_to_timeline_media.edges);
+
+// Render the Instagram feed.
+const html = instagramFeed.map(post => `
+<div class="instagram-post">
+  <img src="${post.node.thumbnail_url}" alt="${post.node.caption.text}">
+</div>
+`);
+
+document.querySelector('#instagram-feed').innerHTML = html;
+</script>
+</body>
+</html>

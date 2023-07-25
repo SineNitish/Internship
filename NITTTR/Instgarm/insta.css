@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  #instagram-feed {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
